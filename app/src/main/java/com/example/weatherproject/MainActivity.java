@@ -14,6 +14,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 
@@ -24,8 +25,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d("JSON", "onCreate");
-        DownloadWeatherData asycTask = new DownloadWeatherData();
-        asycTask.execute("http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=32d88b1ecd39ef961c7c86fe102d4406");
+        DownloadWeatherData asyncTask = new DownloadWeatherData();
+        asyncTask.execute("http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=32d88b1ecd39ef961c7c86fe102d4406");
     }
     private class DownloadWeatherData extends AsyncTask<String, Void, Void>{
 
@@ -40,21 +41,23 @@ public class MainActivity extends AppCompatActivity {
                 URLConnection connect = REST.openConnection();
                 Log.d("JSON", connect.toString());
                 InputStream stream = connect.getInputStream();
-                //BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
-//                StringBuilder builder = new StringBuilder();
-//                String line;
-//                while((line = reader.readLine()) != null) {
-//                    builder.append(line);
-//                }
-//                String jsonString = builder.toString();
-//                JSONObject json = new JSONObject(jsonString);
+                BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
+                StringBuilder builder = new StringBuilder();
+                String line;
+                while((line = reader.readLine()) != null) {
+                    builder.append(line);
+                }
+                String jsonString = builder.toString(); //String
+                JSONObject json = new JSONObject(jsonString);
 
-                Log.d("JSON", "here!");
+                Log.d("JSON", jsonString);
 
             }catch(IOException e){
                 e.printStackTrace();
                 Log.d("JSON", "IO EXCEPTION");
 
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
             return null;
         }
@@ -63,3 +66,4 @@ public class MainActivity extends AppCompatActivity {
 
 
 //http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=32d88b1ecd39ef961c7c86fe102d4406
+//api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}

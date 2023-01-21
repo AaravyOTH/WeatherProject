@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,8 +30,7 @@ public class MainActivity extends AppCompatActivity{
     Button ZipCodeSender;
     String ZipCode;
     JSONObject json;
-    String longitude;
-    String lattitude;
+    TextView textViewCity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity{
 
         editText = findViewById(R.id.ZipCodeInput);
         ZipCodeSender = findViewById(R.id.sendZipCode);
+        textViewCity = findViewById(R.id.textViewCity);
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -112,7 +113,11 @@ public class MainActivity extends AppCompatActivity{
         @Override
         protected void onPostExecute(Void unused) {
             super.onPostExecute(unused);
-
+        /*    try {
+                textViewCity.setText((CharSequence) json.get("city"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }*/
         }
     }
 

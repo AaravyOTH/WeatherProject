@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +29,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
 import java.util.jar.JarEntry;
 
 
@@ -52,6 +54,13 @@ public class MainActivity extends AppCompatActivity{
     TextView thirdDate;
     TextView fourthDate;
     TextView fifthDate;
+    TextView qoute;
+    ImageView currentImage;
+    ImageView secondImage;
+    ImageView thirdImage;
+    ImageView fourthImage;
+    ImageView fifthImage;
+
 
     String sunny = "Delphox used Sunny Day!";
     String rainy = "Lapras used Rain Dance!";
@@ -81,6 +90,12 @@ public class MainActivity extends AppCompatActivity{
         Log.d("closestHour",closestHourTest);
 
         //
+        qoute = findViewById(R.id.textViewQoute);
+        currentImage = findViewById(R.id.imageViewCurrent);
+        secondImage = findViewById(R.id.imageViewSecond);
+        thirdImage = findViewById(R.id.imageViewThird);
+        fourthImage = findViewById(R.id.imageViewFourth);
+        fifthImage = findViewById(R.id.imageViewFifth);
         currentHigh = findViewById(R.id.textViewCurrentHigh);
         currentLow = findViewById(R.id.textViewCurrentLow);
         secondHigh = findViewById(R.id.textViewSecondHigh);
@@ -192,62 +207,78 @@ public class MainActivity extends AppCompatActivity{
             }
             try {
                 String str = json.getJSONArray("list").getJSONObject(0).getJSONObject("main").getString("temp_max");
-                Log.d("THISYO", str);
                 String secondStr = KelvinToFahrenheit(str);
-                currentHigh.setText("High: " + secondStr + "f");
+                currentHigh.setText("H: " + secondStr + "°f");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
             try {
-                currentLow.setText("Low:" + json.getJSONArray("list").getJSONObject(0).getJSONObject("main").getString("temp_min"));
-
+                String str = json.getJSONArray("list").getJSONObject(0).getJSONObject("main").getString("temp_min");
+                String secondStr = KelvinToFahrenheit(str);
+                currentLow.setText("L: " + secondStr + "°f");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
             try {
-                secondHigh.setText("High:" + json.getJSONArray("list").getJSONObject(1).getJSONObject("main").getString("temp_max"));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            try {
-                secondLow.setText("Low:" + json.getJSONArray("list").getJSONObject(1).getJSONObject("main").getString("temp_min"));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            try {
-                thirdHigh.setText("High:" + json.getJSONArray("list").getJSONObject(2).getJSONObject("main").getString("temp_max"));
+                String str = json.getJSONArray("list").getJSONObject(1).getJSONObject("main").getString("temp_max");
+                String secondStr = KelvinToFahrenheit(str);
+                secondHigh.setText("H: " + secondStr + "°f");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
             try {
-                thirdLow.setText("Low:" + json.getJSONArray("list").getJSONObject(2).getJSONObject("main").getString("temp_min"));
+                String str = json.getJSONArray("list").getJSONObject(1).getJSONObject("main").getString("temp_min");
+                String secondStr = KelvinToFahrenheit(str);
+                secondLow.setText("L: " + secondStr + "°f");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
             try {
-                fourthHigh.setText("High:" + json.getJSONArray("list").getJSONObject(4).getJSONObject("main").getString("temp_max"));
+                String str = json.getJSONArray("list").getJSONObject(2).getJSONObject("main").getString("temp_max");
+                String secondStr = KelvinToFahrenheit(str);
+                thirdHigh.setText("H: " + secondStr + "°f");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
             try {
-                fourthLow.setText("Low:" + json.getJSONArray("list").getJSONObject(4).getJSONObject("main").getString("temp_min"));
+                String str = json.getJSONArray("list").getJSONObject(2).getJSONObject("main").getString("temp_min");
+                String secondStr = KelvinToFahrenheit(str);
+                thirdLow.setText("L: " + secondStr + "°f");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
             try {
-                fifthHigh.setText("High:" + json.getJSONArray("list").getJSONObject(5).getJSONObject("main").getString("temp_max"));
+                String str = json.getJSONArray("list").getJSONObject(3).getJSONObject("main").getString("temp_max");
+                String secondStr = KelvinToFahrenheit(str);
+                fourthHigh.setText("H: " + secondStr + "°f");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
             try {
-                fifthLow.setText("Low:" + json.getJSONArray("list").getJSONObject(5).getJSONObject("main").getString("temp_min"));
+                String str = json.getJSONArray("list").getJSONObject(3).getJSONObject("main").getString("temp_min");
+                String secondStr = KelvinToFahrenheit(str);
+                fourthLow.setText("L: " + secondStr + "°f");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                String str = json.getJSONArray("list").getJSONObject(4).getJSONObject("main").getString("temp_max");
+                String secondStr = KelvinToFahrenheit(str);
+                fifthHigh.setText("H: " + secondStr + "°f");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                String str = json.getJSONArray("list").getJSONObject(4).getJSONObject("main").getString("temp_min");
+                String secondStr = KelvinToFahrenheit(str);
+                fifthLow.setText("L: " + secondStr + "°f");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -292,14 +323,127 @@ public class MainActivity extends AppCompatActivity{
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+            try {
+                String str = json.getJSONArray("list").getJSONObject(0).getJSONArray("weather").getJSONObject(0).getString("id");
+                currentImage.setImageResource(weatherPicture(str));
+                String str2 = json.getJSONArray("list").getJSONObject(0).getJSONArray("weather").getJSONObject(0).getString("id");
+                secondImage.setImageResource(weatherPicture(str2));
+                String str3 = json.getJSONArray("list").getJSONObject(0).getJSONArray("weather").getJSONObject(0).getString("id");
+                thirdImage.setImageResource(weatherPicture(str3));
+                String str4 = json.getJSONArray("list").getJSONObject(0).getJSONArray("weather").getJSONObject(0).getString("id");
+                fourthImage.setImageResource(weatherPicture(str4));
+                String str5 = json.getJSONArray("list").getJSONObject(0).getJSONArray("weather").getJSONObject(0).getString("id");
+                fifthImage.setImageResource(weatherPicture(str5));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            try {
+                int i = weatherPicture(json.getJSONArray("list").getJSONObject(0).getJSONArray("weather").getJSONObject(0).getString("id"));
+                if(i == R.drawable.cloudy || i == R.drawable.partlycloudy || i == R.drawable.morecloudy || i == R.drawable.mostlycloudy){
+                    int ran = (int) ( Math.random() * 2 + 1);
+                    if(ran == 1){
+                        qoute.setText(cloudy);
+                    }
+                    if(ran == 2){
+                        qoute.setText(cloudyTwo);
+                    }
+                }
+                if(i == R.drawable.hail || i == R.drawable.snowy || i == R.drawable.rainysnowy){
+                    int ran = (int) ( Math.random() * 2 + 1);
+                    if(ran == 1){
+                        qoute.setText(snow);
+                    }
+                    if(ran == 2){
+                        qoute.setText(snowTwo);
+                    }
+                }
+                if(i == R.drawable.sunny){
+                    int ran = (int) ( Math.random() * 3 + 1);
+                    if(ran == 1){
+                        qoute.setText(sunny);
+                    }
+                    if(ran == 2){
+                        qoute.setText(sunnyTwo);
+                    }
+                    if(ran == 2){
+                        qoute.setText(clear);
+                    }
+                }
+                if(i == R.drawable.rainy || i == R.drawable.morerainy || i == R.drawable.partlyrainy){
+                    qoute.setText(rainy);
+
+
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
 
 
         }
     }
 
     public String KelvinToFahrenheit(String str){
-        Double number = Double.valueOf(str)- 255.372;
+        Double number = ((Double.valueOf(str) - 273.15) * 1.8) + 32;
         return String.format("%.2f", number);
+   }
+   public int weatherPicture(String str){
+        int num = Integer.parseInt(str);
+       switch (num) {
+           case 804 : return R.drawable.cloudy;
+           case 803: return R.drawable.morecloudy;
+           case 802: return R.drawable.mostlycloudy;
+           case 801: return R.drawable.partlycloudy;
+           case 800: return R.drawable.sunny;
+
+           case 600:
+           case 620:
+           case 602:
+           case 601:
+               return R.drawable.snowy;
+           case 611:
+           case 613:
+           case 612:
+               return R.drawable.hail;
+           case 615:
+           case 616:
+               return R.drawable.rainysnowy;
+           case 502:
+           case 531:
+           case 522:
+           case 521:
+           case 520:
+           case 511:
+           case 504:
+           case 503:
+               return R.drawable.rainy;
+           case 500:
+           case 321:
+           case 501:
+           case 312:
+           case 313:
+           case 314:
+               return R.drawable.morerainy;
+           case 300:
+           case 301:
+           case 302:
+           case 310:
+           case 311:
+               return R.drawable.partlyrainy;
+           case 232:
+           case 221:
+           case 210:
+           case 212:
+               return R.drawable.cloudythunderrain;
+           case 200:
+           case 201:
+           case 230:
+           case 231:
+                return R.drawable.thunderrain;
+           default: return R.drawable.cloudy;
+       }
+
    }
 
     public String getTime(String str){
@@ -315,7 +459,7 @@ public class MainActivity extends AppCompatActivity{
                 return string;
             }
         }else if(num == 0) {
-            return "7 am";
+            return "7 pm";
         }else{
             num = num - 5;
             if(num < 0) {
@@ -348,3 +492,4 @@ public class MainActivity extends AppCompatActivity{
 
 //https://api.openweathermap.org/data/2.5/weather?zip=[zipcode],US&appid=32d88b1ecd39ef961c7c86fe102d4406
 //https://api.openweathermap.org/data/2.5/forecast?zip=08824&appid=32d88b1ecd39ef961c7c86fe102d4406
+//WAS DOING KELVIN TO FARANIGHT

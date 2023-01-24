@@ -46,11 +46,21 @@
         android:id="@+id/textViewCurrentHigh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="4dp"
         android:gravity="center"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewCurrent" />
+
+    <TextView
+        android:id="@+id/textViewCurrentLow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCurrentHigh" />
 
     <ImageView
         android:id="@+id/imageViewCurrent"
@@ -96,7 +106,7 @@
         android:id="@+id/imageViewThird"
         android:layout_width="65dp"
         android:layout_height="64dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="28dp"
         android:layout_marginBottom="68dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageViewFourth"
@@ -168,7 +178,7 @@
 
     <TextView
         android:id="@+id/textViewSecondHigh"
-        android:layout_width="wrap_content"
+        android:layout_width="65dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
@@ -178,19 +188,19 @@
 
     <TextView
         android:id="@+id/textViewSecondLow"
-        android:layout_width="wrap_content"
+        android:layout_width="65dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewSecondHigh" />
 
     <TextView
         android:id="@+id/textViewThirdHigh"
-        android:layout_width="wrap_content"
+        android:layout_width="65dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
+        android:layout_marginStart="36dp"
         android:layout_marginTop="12dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -200,9 +210,9 @@
 
     <TextView
         android:id="@+id/textViewThirdLow"
-        android:layout_width="wrap_content"
+        android:layout_width="65dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="9dp"
         android:layout_marginEnd="44dp"
         android:layout_marginBottom="9dp"
@@ -210,11 +220,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/textViewFourthLow"
         app:layout_constraintStart_toEndOf="@+id/textViewSecondLow"
-        app:layout_constraintTop_toBottomOf="@+id/textViewThirdHigh" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewThirdHigh"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textViewFourthHigh"
-        android:layout_width="wrap_content"
+        android:layout_width="65dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="47dp"
         android:layout_marginTop="12dp"
@@ -222,51 +233,43 @@
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/textViewFifthHigh"
+        app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toEndOf="@+id/textViewThirdHigh"
         app:layout_constraintTop_toBottomOf="@+id/imageViewFourth"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textViewFourthLow"
-        android:layout_width="wrap_content"
+        android:layout_width="65dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="8dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textViewThirdLow"
-        app:layout_constraintTop_toBottomOf="@+id/textViewFourthHigh" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewFourthHigh"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textViewFifthHigh"
-        android:layout_width="wrap_content"
+        android:layout_width="65dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginEnd="16dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewFifth" />
 
     <TextView
         android:id="@+id/textViewFifthLow"
-        android:layout_width="wrap_content"
+        android:layout_width="65dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewFifthHigh" />
-
-    <TextView
-        android:id="@+id/textViewCurrentLow"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:gravity="center"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewCurrentHigh" />
 
     <TextView
         android:id="@+id/textViewCity"

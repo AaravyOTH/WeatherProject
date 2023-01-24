@@ -80,10 +80,12 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getSupportActionBar().hide();
+
         //Get The Current Hour along with tests
 
         Log.d("JSON", "onCreate");
-        String currentHour =Integer.toString(currentTime2);
+        String currentHour = Integer.toString(currentTime2);
         Log.d("time", String.valueOf(currentTime));
         int closestHour = getClosestHour(currentTime2);
         String closestHourTest = Integer.toString(closestHour);
@@ -243,6 +245,10 @@ public class MainActivity extends AppCompatActivity{
                 e.printStackTrace();
             }
 
+
+
+
+
             try {
                 String str = json.getJSONArray("list").getJSONObject(2).getJSONObject("main").getString("temp_min");
                 String secondStr = KelvinToFahrenheit(str);
@@ -374,6 +380,9 @@ public class MainActivity extends AppCompatActivity{
 
 
                 }
+                if(i == R.drawable.thunderrain || i == R.drawable.cloudythunderrain){
+                    qoute.setText(stormy);
+                }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -493,3 +502,6 @@ public class MainActivity extends AppCompatActivity{
 //https://api.openweathermap.org/data/2.5/weather?zip=[zipcode],US&appid=32d88b1ecd39ef961c7c86fe102d4406
 //https://api.openweathermap.org/data/2.5/forecast?zip=08824&appid=32d88b1ecd39ef961c7c86fe102d4406
 //WAS DOING KELVIN TO FARANIGHT
+//add another color
+//change font
+//think about wind and the other shit

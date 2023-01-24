@@ -12,9 +12,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -24,6 +26,10 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.jar.JarEntry;
+
 
 public class MainActivity extends AppCompatActivity{
     EditText editText;
@@ -31,13 +37,65 @@ public class MainActivity extends AppCompatActivity{
     String ZipCode;
     JSONObject json;
     TextView textViewCity;
+    TextView Date;
+    TextView currentHigh;
+    TextView currentLow;
+    TextView secondHigh;
+    TextView secondLow;
+    TextView thirdHigh;
+    TextView thirdLow;
+    TextView fourthHigh;
+    TextView fourthLow;
+    TextView fifthHigh;
+    TextView fifthLow;
+    TextView secondDate;
+    TextView thirdDate;
+    TextView fourthDate;
+    TextView fifthDate;
+
+    String sunny = "Delphox used Sunny Day!";
+    String rainy = "Lapras used Rain Dance!";
+    String stormy = "A wild Thundurus Appeared!";
+    String cloudy = "Ho-Oh is nowhere to be found!";
+    String snow = "Articuno used Blizzard!";
+    String clear = "Its a beautiful day in the Kanto Region!";
+    String windy = "Pidgeotto Used Gust!";
+    String sunnyTwo = "Its a fantastic day for Pokemon Training!";
+    String cloudyTwo = "It feels like Lavendar Town! The clouds feel ominous";
+    String snowTwo = "It feels like SnowPoint City";
+
+    Date currentTime = Calendar.getInstance().getTime();
+    int currentTime2 = Calendar.getInstance().getTime().getHours();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Get The Current Hour along with tests
+
         Log.d("JSON", "onCreate");
+        String currentHour =Integer.toString(currentTime2);
+        Log.d("time", String.valueOf(currentTime));
+        int closestHour = getClosestHour(currentTime2);
+        String closestHourTest = Integer.toString(closestHour);
+        Log.d("closestHour",closestHourTest);
 
-
+        //
+        currentHigh = findViewById(R.id.textViewCurrentHigh);
+        currentLow = findViewById(R.id.textViewCurrentLow);
+        secondHigh = findViewById(R.id.textViewSecondHigh);
+        secondLow = findViewById(R.id.textViewSecondLow);
+        thirdHigh = findViewById(R.id.textViewThirdHigh);
+        thirdLow = findViewById(R.id.textViewThirdLow);
+        fourthHigh = findViewById(R.id.textViewFourthHigh);
+        fourthLow = findViewById(R.id.textViewFourthLow);
+        fifthHigh = findViewById(R.id.textViewFifthHigh);
+        fifthLow = findViewById(R.id.textViewFifthLow);
+        Date = findViewById(R.id.textViewCurrentDate);
+        secondDate = findViewById(R.id.textViewSecondDate);
+        thirdDate = findViewById(R.id.textViewThirdDate);
+        fourthDate = findViewById(R.id.textViewFourthDate);
+        fifthDate = findViewById(R.id.textViewFifthDate);
         editText = findViewById(R.id.ZipCodeInput);
         ZipCodeSender = findViewById(R.id.sendZipCode);
         textViewCity = findViewById(R.id.textViewCity);
@@ -63,7 +121,11 @@ public class MainActivity extends AppCompatActivity{
 
 
                 Log.d("zipcode", ZipCode);
-                new DownloadWeatherData().execute("https://api.openweathermap.org/data/2.5/forecast?zip="+ ZipCode +"&appid=32d88b1ecd39ef961c7c86fe102d4406");
+                try {
+                    new DownloadWeatherData().execute("https://api.openweathermap.org/data/2.5/forecast?zip="+ ZipCode +"&appid=32d88b1ecd39ef961c7c86fe102d4406");
+
+                }catch (Exception e){
+                }
 
             }
 
@@ -113,15 +175,174 @@ public class MainActivity extends AppCompatActivity{
         @Override
         protected void onPostExecute(Void unused) {
             super.onPostExecute(unused);
-        /*    try {
-                textViewCity.setText((CharSequence) json.get("city"));
+            try {
+                Log.d("DATETESTFIRST", json.getJSONArray("list").getJSONObject(0).getString("dt_txt"));
+                String str = json.getJSONArray("list").getJSONObject(0).getString("dt_txt").substring(11,13);
+                String strDay = json.getJSONArray("list").getJSONObject(0).getString("dt_txt").substring(5,10);
+
+                Date.setText(strDay + " " + getTime(str));
             } catch (JSONException e) {
                 e.printStackTrace();
-            }*/
+            }
+
+            try {
+                textViewCity.setText((CharSequence) json.getJSONObject("city").getString("name"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            try {
+                String str = json.getJSONArray("list").getJSONObject(0).getJSONObject("main").getString("temp_max");
+                Log.d("THISYO", str);
+                String secondStr = KelvinToFahrenheit(str);
+                currentHigh.setText("High: " + secondStr + "f");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            try {
+                currentLow.setText("Low:" + json.getJSONArray("list").getJSONObject(0).getJSONObject("main").getString("temp_min"));
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            try {
+                secondHigh.setText("High:" + json.getJSONArray("list").getJSONObject(1).getJSONObject("main").getString("temp_max"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                secondLow.setText("Low:" + json.getJSONArray("list").getJSONObject(1).getJSONObject("main").getString("temp_min"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                thirdHigh.setText("High:" + json.getJSONArray("list").getJSONObject(2).getJSONObject("main").getString("temp_max"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                thirdLow.setText("Low:" + json.getJSONArray("list").getJSONObject(2).getJSONObject("main").getString("temp_min"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                fourthHigh.setText("High:" + json.getJSONArray("list").getJSONObject(4).getJSONObject("main").getString("temp_max"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                fourthLow.setText("Low:" + json.getJSONArray("list").getJSONObject(4).getJSONObject("main").getString("temp_min"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                fifthHigh.setText("High:" + json.getJSONArray("list").getJSONObject(5).getJSONObject("main").getString("temp_max"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                fifthLow.setText("Low:" + json.getJSONArray("list").getJSONObject(5).getJSONObject("main").getString("temp_min"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+            try {
+                Log.d("DATETESTSECOND", json.getJSONArray("list").getJSONObject(1).getString("dt_txt"));
+                String str = json.getJSONArray("list").getJSONObject(1).getString("dt_txt").substring(11,13);
+                String strDay = json.getJSONArray("list").getJSONObject(1).getString("dt_txt").substring(5,10);
+
+                secondDate.setText(strDay + " " + getTime(str));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                Log.d("DATETESTTHIRD", json.getJSONArray("list").getJSONObject(2).getString("dt_txt"));
+                String str = json.getJSONArray("list").getJSONObject(2).getString("dt_txt").substring(11,13);
+                String strDay = json.getJSONArray("list").getJSONObject(2).getString("dt_txt").substring(5,10);
+
+                thirdDate.setText(strDay + " " + getTime(str));
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                Log.d("DATETESTFOURTH", json.getJSONArray("list").getJSONObject(3).getString("dt_txt"));
+                String str = json.getJSONArray("list").getJSONObject(3).getString("dt_txt").substring(11,13);
+                String strDay = json.getJSONArray("list").getJSONObject(3).getString("dt_txt").substring(5,10);
+                fourthDate.setText(strDay + " " + getTime(str));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                Log.d("DATETESTFIFTH", json.getJSONArray("list").getJSONObject(4).getString("dt_txt"));
+                String str = json.getJSONArray("list").getJSONObject(4).getString("dt_txt").substring(11,13);
+                String strDay = json.getJSONArray("list").getJSONObject(4).getString("dt_txt").substring(5,10);
+
+                fifthDate.setText(strDay + " " + getTime(str));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
         }
     }
 
+    public String KelvinToFahrenheit(String str){
+//255.372
+        Double number = Double.valueOf(str);
+        String preTruncate = number - 255.372 + "";
+        String postTruncate = preTruncate.substring(0,5);
+        return postTruncate;
+   }
 
+    public String getTime(String str){
+        int num = Integer.parseInt(str);
+        if(num > 12){
+            num = num - 17;
+            if(num < 0){
+                String string =   num + 12 + " am";
+                return string;
+            }
+            else {
+                String string = num + " pm";
+                return string;
+            }
+        }else if(num == 0) {
+            return "7 am";
+        }else{
+            num = num - 5;
+            if(num < 0) {
+                String string = 12 + num + " pm";
+                return string;
+            }
+            else{
+                String string = num + " am";
+                return string;
+            }
+        }
+    }
+
+    public int getClosestHour(int Time){
+           if(Time % 3 == 0)
+            return Time;
+        if(Time % 3 == 1)
+            return Time - 1;
+        if (Time % 3 == 2)
+            return Time + 1;
+        else{
+            return 0;
+        }
+    }
 }
 
 //http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=32d88b1ecd39ef961c7c86fe102d4406
@@ -129,4 +350,4 @@ public class MainActivity extends AppCompatActivity{
 //api.openweathermap.org/data/2.5/forecast?zip=08824&appid=524901&appid=32d88b1ecd39ef961c7c86fe102d4406
 
 //https://api.openweathermap.org/data/2.5/weather?zip=[zipcode],US&appid=32d88b1ecd39ef961c7c86fe102d4406
-//THIS THE SHIT I NEED https://api.openweathermap.org/data/2.5/forecast?zip=08824&appid=32d88b1ecd39ef961c7c86fe102d4406
+//https://api.openweathermap.org/data/2.5/forecast?zip=08824&appid=32d88b1ecd39ef961c7c86fe102d4406

@@ -44,40 +44,40 @@
 
     <TextView
         android:id="@+id/textViewCurrentHigh"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="175dp"
-        android:layout_marginTop="64dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sendZipCode" />
-
-    <ImageView
-        android:id="@+id/imageViewCurrent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="138dp"
-        android:layout_marginTop="68dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewCurrentHigh"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <TextView
-        android:id="@+id/textViewQoute"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="19dp"
+        android:gravity="center"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewCurrent" />
 
+    <ImageView
+        android:id="@+id/imageViewCurrent"
+        android:layout_width="127dp"
+        android:layout_height="131dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCurrentDate"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/textViewQoute"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:gravity="center"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCity" />
+
     <TextView
         android:id="@+id/textViewCurrentDate"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="23dp"
+        android:gravity="center"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewQoute" />
@@ -86,181 +86,195 @@
         android:id="@+id/imageViewSecond"
         android:layout_width="71dp"
         android:layout_height="63dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="72dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <ImageView
         android:id="@+id/imageViewThird"
-        android:layout_width="60dp"
-        android:layout_height="63dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="56dp"
+        android:layout_width="65dp"
+        android:layout_height="64dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="68dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageViewFourth"
         tools:srcCompat="@tools:sample/avatars" />
 
     <ImageView
         android:id="@+id/imageViewFourth"
-        android:layout_width="65dp"
-        android:layout_height="63dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="56dp"
+        android:layout_width="69dp"
+        android:layout_height="64dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="68dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageViewFifth"
         tools:srcCompat="@tools:sample/avatars" />
 
     <ImageView
         android:id="@+id/imageViewFifth"
-        android:layout_width="66dp"
-        android:layout_height="61dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginBottom="60dp"
+        android:layout_width="70dp"
+        android:layout_height="65dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="68dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/textViewSecondDate"
-        android:layout_width="wrap_content"
+        android:layout_width="45dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textViewThirdDate"
-        app:layout_constraintHorizontal_bias="0.573"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewSecond"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="23dp"
+        android:text="Date"
+        app:layout_constraintBottom_toTopOf="@+id/imageViewSecond"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textViewThirdDate"
-        android:layout_width="wrap_content"
+        android:layout_width="45dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="24dp"
-        android:text="TextView"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="25dp"
+        android:text="Date"
+        app:layout_constraintBottom_toTopOf="@+id/imageViewThird"
         app:layout_constraintEnd_toStartOf="@+id/textViewFourthDate"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewThird" />
+        app:layout_constraintStart_toEndOf="@+id/textViewSecondDate" />
 
     <TextView
         android:id="@+id/textViewFourthDate"
-        android:layout_width="wrap_content"
+        android:layout_width="45dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="36dp"
-        android:text="TextView"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="51dp"
+        android:layout_marginBottom="25dp"
+        android:text="Date"
+        app:layout_constraintBottom_toTopOf="@+id/imageViewFourth"
         app:layout_constraintEnd_toStartOf="@+id/textViewFifthDate"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewFourth" />
+        app:layout_constraintStart_toEndOf="@+id/textViewThirdDate" />
 
     <TextView
         android:id="@+id/textViewFifthDate"
-        android:layout_width="wrap_content"
+        android:layout_width="45dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="44dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewFifth" />
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="24dp"
+        android:text="Date"
+        app:layout_constraintBottom_toTopOf="@+id/imageViewFifth"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/textViewSecondHigh"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/textViewSecondLow"
-        app:layout_constraintEnd_toStartOf="@+id/textViewThirdHigh" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewSecond" />
 
     <TextView
         android:id="@+id/textViewSecondLow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewSecond"
-        app:layout_constraintEnd_toStartOf="@+id/textViewThirdLow" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSecondHigh" />
 
     <TextView
         android:id="@+id/textViewThirdHigh"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="12dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/textViewThirdLow"
-        app:layout_constraintEnd_toStartOf="@+id/textViewFourthHigh" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewSecondHigh"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewThird"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textViewThirdLow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="9dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewThird"
-        app:layout_constraintEnd_toStartOf="@+id/textViewFourthLow" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textViewFourthLow"
+        app:layout_constraintStart_toEndOf="@+id/textViewSecondLow"
+        app:layout_constraintTop_toBottomOf="@+id/textViewThirdHigh" />
 
     <TextView
         android:id="@+id/textViewFourthHigh"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="47dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="56dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/textViewFourthLow"
-        app:layout_constraintEnd_toStartOf="@+id/textViewFifthHigh" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textViewFifthHigh"
+        app:layout_constraintStart_toEndOf="@+id/textViewThirdHigh"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewFourth"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textViewFourthLow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="8dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewFourth"
-        app:layout_constraintEnd_toStartOf="@+id/textViewFifthLow" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewThirdLow"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFourthHigh" />
 
     <TextView
         android:id="@+id/textViewFifthHigh"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="52dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/textViewFifthLow"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewFifth" />
 
     <TextView
         android:id="@+id/textViewFifthLow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="52dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewFifth"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFifthHigh" />
 
     <TextView
         android:id="@+id/textViewCurrentLow"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="175dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewCurrentHigh" />
 
     <TextView
         android:id="@+id/textViewCity"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="wrap_content"
-        android:layout_marginStart="172dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="20dp"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sendZipCode" />

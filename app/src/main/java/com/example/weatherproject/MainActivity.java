@@ -298,11 +298,8 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public String KelvinToFahrenheit(String str){
-//255.372
-        Double number = Double.valueOf(str);
-        String preTruncate = number - 255.372 + "";
-        String postTruncate = preTruncate.substring(0,5);
-        return postTruncate;
+        Double number = Double.valueOf(str)- 255.372;
+        return String.format("%.2f", number);
    }
 
     public String getTime(String str){
